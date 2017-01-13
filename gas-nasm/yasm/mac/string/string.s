@@ -12,14 +12,16 @@ GSTR_SIZE equ $ - greet_str
 
 section .bss
 
-; Reserve 32 bytes of memory buff resb 32
+; Reserve 32 bytes of memory 
+    
+    buff resb 32
 
 ; A macro with two parameters 
 
 ; Implements thee write system call
 
 %macro write 2
-    mov eax,4
+    mov eax,4  ; SYS_write 4
     mov ebx,1
     mov ecx,%1
     mov edx,%2
@@ -29,7 +31,7 @@ section .bss
 ; Implements the read system call
 
 %macro read 2
-    mov eax,3
+    mov eax,3  ; SYS_read 3
     mov ebx,0
     mov ecx,%1
     mov edx,%2
